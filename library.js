@@ -121,7 +121,8 @@
 					oAuthid: profile.id,
 					handle: profile.displayName,
 					email: profile.emails[0].value,
-					isAdmin: profile.isAdmin
+					isAdmin: profile.isAdmin,
+					picture: profile.picture
 				}, function(err, user) {
 					if (err) {
 						return done(err);
@@ -164,7 +165,6 @@
 			profile.picture = data.logo;
 		}
 
-
 		// Do you want to automatically make somebody an admin? This line might help you do that...
 		// profile.isAdmin = data.isAdmin ? true : false;
 
@@ -191,6 +191,7 @@
 				var success = function(uid) {
 					// Save provider-specific information to the user
 					User.setUserField(uid, constants.name + 'Id', payload.oAuthid);
+					User.setUserField(uid, 'picture', payload.picture);
 					db.setObjectField(constants.name + 'Id:uid', payload.oAuthid, uid);
 
 					if (payload.isAdmin) {
