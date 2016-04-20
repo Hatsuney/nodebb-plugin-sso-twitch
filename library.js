@@ -159,9 +159,9 @@
 		profile.displayName = data.display_name;
 		profile.emails = [{ value: data.email }];
 		if(data.logo == "null" || data.logo == null || data.logo.indexOf('http') != 0) {
-			profile.logo = 'http://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png';
+			profile.picture = 'http://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png';
 		} else {
-			profile.logo = data.logo;
+			profile.picture = data.logo;
 		}
 
 
